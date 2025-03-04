@@ -13,54 +13,186 @@
       input[type="text"] {
         margin: 5px;
         padding: 5px;
-        width: 50px; /* Reduced input width */
+        width: 50px;
       }
     </style>
   </head>
   <body>
     <h2>
-      This page pretty much same as basics...but here I will add explanations
-      here
+      This page is pretty much the same as basics... but here I will add
+      explanations.
     </h2>
-    <h3>Let's Draw a circle</h3>
+    <p>
+      For a detailed explanation, check out the
+      <a
+        target="_blank"
+        href="https://github.com/muhammadahmad1857/mastering-svgs/blob/master/step_01_creating_svg/readme.md"
+        >README.md</a
+      >.
+    </p>
+    <h3>Let's Draw a Circle</h3>
+
     <div>
-      <label for="cx">Cx:</label> <!-- Cx is the x-coordinate of the center of the circle -->
-      <input type="text" id="cx" value="150" />
-      <label for="cy">Cy:</label> <!-- Cy is the y-coordinate of the center of the circle -->
-      <input type="text" id="cy" value="150" />
-      <label for="r">R:</label> <!-- R is the radius of the circle -->
+      <label for="cx">Cx:</label>
+      <input type="text" id="cx" value="125" />
+      <label for="cy">Cy:</label>
+      <input type="text" id="cy" value="125" />
+      <label for="r">R:</label>
       <input type="text" id="r" value="100" />
-      <label for="stroke">Stroke:</label> <!-- Stroke is the color of the circle's border -->
+      <label for="stroke">Stroke:</label>
       <input type="text" id="stroke" value="black" />
-      <label for="stroke-width">Stroke W:</label> <!-- Stroke-width is the width of the circle's border -->
+      <label for="stroke-width">Stroke W:</label>
       <input type="text" id="stroke-width" value="3" />
-      <label for="fill">Fill:</label> <!-- Fill is the color of the circle's interior -->
+      <label for="fill">Fill:</label>
       <input type="text" id="fill" value="yellow" />
+      <label for="inner-r">Inner R:</label>
+      <input type="text" id="inner-r" value="70" />
+      <label for="inner-fill">Inner Fill:</label>
+      <input type="text" id="inner-fill" value="blue" />
+      <label for="inner-stroke">Inner Stroke:</label>
+      <input type="text" id="inner-stroke" value="green" />
+      <label for="inner-stroke-width">Inner Stroke W:</label>
+      <input type="text" id="inner-stroke-width" value="2" />
     </div>
     <svg width="250" height="250" id="svgCircle">
+      <!-- Outer Circle -->
       <circle
-       cx="125"
-       cy="125"
-       r="100"
-       stroke="black"
-       stroke-width="3"
-       fill="yellow"
+        id="outerCircle"
+        cx="125"
+        cy="125"
+        r="100"
+        stroke="black"
+        stroke-width="3"
+        fill="yellow"
       />
+      <!-- Inner Circle -->
+      <circle
+        id="innerCircle"
+        cx="125"
+        cy="125"
+        r="70"
+        stroke="green"
+        stroke-width="2"
+        fill="blue"
+      />
+    </svg>
+
+    <h3>Let's Draw a Rectangle and a Line</h3>
+    <div>
+      <label for="rect-x">Rect X:</label>
+      <input type="text" id="rect-x" value="50" />
+      <label for="rect-y">Rect Y:</label>
+      <input type="text" id="rect-y" value="50" />
+      <label for="rect-width">Width:</label>
+      <input type="text" id="rect-width" value="100" />
+      <label for="rect-height">Height:</label>
+      <input type="text" id="rect-height" value="60" />
+      <label for="rect-fill">Fill:</label>
+      <input type="text" id="rect-fill" value="lightblue" />
+      <label for="rect-stroke">Stroke:</label>
+      <input type="text" id="rect-stroke" value="black" />
+      <label for="line-x1">Line X1:</label>
+      <input type="text" id="line-x1" value="30" />
+      <label for="line-y1">Line Y1:</label>
+      <input type="text" id="line-y1" value="30" />
+      <label for="line-x2">Line X2:</label>
+      <input type="text" id="line-x2" value="200" />
+      <label for="line-y2">Line Y2:</label>
+      <input type="text" id="line-y2" value="100" />
+    </div>
+    <svg width="250" height="250" id="svgRectLine">
+      <!-- Rectangle -->
+      <rect
+        id="rect"
+        x="25"
+        y="25"
+        width="200"
+        height="200"
+        stroke="black"
+        stroke-width="3"
+        fill="lightblue"
+        rx="20"
+        ry="20"
+      />
+      <!-- Line -->
+      <line
+        id="line"
+        x1="60"
+        y1="50"
+        x2="200"
+        y2="150"
+        stroke="red"
+        stroke-width="2"
+      />
+    </svg>
+    <h3>Now Let's Draw a Custom Shape Polygon</h3>
+
+    <svg width="500" height="270">
+      <polygon fill="pink" points="80,50 230,50 230,200 155,125 80,200" />
+      <!-- Congrats You Make your first  Save ICON -->
+      <text x="0" y="250" font-family="Verdana" font-size="20" fill="black">
+        Congrats You Make your first Save ICON
+      </text>
     </svg>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const svgCircle = document.getElementById("svgCircle");
-        const circle = svgCircle.querySelector("circle");
+        const outerCircle = document.getElementById("outerCircle");
+        const innerCircle = document.getElementById("innerCircle");
+        const rect = document.getElementById("rect");
+        const line = document.getElementById("line");
         const inputs = document.querySelectorAll('input[type="text"]');
 
         inputs.forEach((input) => {
           input.addEventListener("input", function () {
-            circle.setAttribute(input.id, this.value);
+            const value = this.value;
+            switch (input.id) {
+              case "cx":
+              case "cy":
+                outerCircle.setAttribute(input.id, value);
+                innerCircle.setAttribute(input.id, value);
+                break;
+              case "r":
+                outerCircle.setAttribute("r", value);
+                break;
+              case "inner-r":
+                innerCircle.setAttribute("r", value);
+                break;
+              case "stroke":
+                outerCircle.setAttribute("stroke", value);
+                break;
+              case "stroke-width":
+                outerCircle.setAttribute("stroke-width", value);
+                break;
+              case "fill":
+                outerCircle.setAttribute("fill", value);
+                break;
+              case "inner-stroke":
+                innerCircle.setAttribute("stroke", value);
+                break;
+              case "inner-stroke-width":
+                innerCircle.setAttribute("stroke-width", value);
+                break;
+              case "inner-fill":
+                innerCircle.setAttribute("fill", value);
+                break;
+              case "rect-x":
+              case "rect-y":
+              case "rect-width":
+              case "rect-height":
+              case "rect-fill":
+              case "rect-stroke":
+                rect.setAttribute(input.id.replace("rect-", ""), value);
+                break;
+              case "line-x1":
+              case "line-y1":
+              case "line-x2":
+              case "line-y2":
+                line.setAttribute(input.id.replace("line-", ""), value);
+                break;
+            }
           });
         });
       });
     </script>
-  </body>
-</html>
   </body>
 </html>
