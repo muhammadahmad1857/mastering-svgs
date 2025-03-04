@@ -4,8 +4,63 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Creating your own SVG</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+      input[type="text"] {
+        margin: 5px;
+        padding: 5px;
+        width: 50px; /* Reduced input width */
+      }
+    </style>
   </head>
   <body>
-    <h1>This page is Coming Soon</h1>
+    <h2>
+      This page pretty much same as basics...but here I will add explanations
+      here
+    </h2>
+    <h3>Let's Draw a circle</h3>
+    <div>
+      <label for="cx">Cx:</label> <!-- Cx is the x-coordinate of the center of the circle -->
+      <input type="text" id="cx" value="150" />
+      <label for="cy">Cy:</label> <!-- Cy is the y-coordinate of the center of the circle -->
+      <input type="text" id="cy" value="150" />
+      <label for="r">R:</label> <!-- R is the radius of the circle -->
+      <input type="text" id="r" value="100" />
+      <label for="stroke">Stroke:</label> <!-- Stroke is the color of the circle's border -->
+      <input type="text" id="stroke" value="black" />
+      <label for="stroke-width">Stroke W:</label> <!-- Stroke-width is the width of the circle's border -->
+      <input type="text" id="stroke-width" value="3" />
+      <label for="fill">Fill:</label> <!-- Fill is the color of the circle's interior -->
+      <input type="text" id="fill" value="yellow" />
+    </div>
+    <svg width="250" height="250" id="svgCircle">
+      <circle
+       cx="125"
+       cy="125"
+       r="100"
+       stroke="black"
+       stroke-width="3"
+       fill="yellow"
+      />
+    </svg>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const svgCircle = document.getElementById("svgCircle");
+        const circle = svgCircle.querySelector("circle");
+        const inputs = document.querySelectorAll('input[type="text"]');
+
+        inputs.forEach((input) => {
+          input.addEventListener("input", function () {
+            circle.setAttribute(input.id, this.value);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
   </body>
 </html>
