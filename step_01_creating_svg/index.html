@@ -30,7 +30,7 @@
       .btn {
         padding: 8px 16px;
         margin: 10px 0;
-        background-color: #007BFF;
+        background-color: #007bff;
         color: white;
         border: none;
         border-radius: 4px;
@@ -47,8 +47,15 @@
     </style>
   </head>
   <body>
-    <h2>SVG Editor</h2>
-
+    <h2>Create your own svg</h2>
+    <p>
+      For a detailed explanation, check out the
+      <a
+        target="_blank"
+        href="https://github.com/muhammadahmad1857/mastering-svgs/blob/master/step_00_basics/readme.md"
+        >README.md</a
+      >.
+    </p>
     <!-- Circle Section -->
     <h3>Circle Controls</h3>
     <div id="circle-controls">
@@ -75,8 +82,24 @@
       <input type="text" id="inner-stroke-width" value="2" />
     </div>
     <svg width="250" height="250" id="svgCircle">
-      <circle id="outerCircle" cx="125" cy="125" r="100" stroke="black" stroke-width="3" fill="yellow" />
-      <circle id="innerCircle" cx="125" cy="125" r="70" stroke="green" stroke-width="2" fill="blue" />
+      <circle
+        id="outerCircle"
+        cx="125"
+        cy="125"
+        r="100"
+        stroke="black"
+        stroke-width="3"
+        fill="yellow"
+      />
+      <circle
+        id="innerCircle"
+        cx="125"
+        cy="125"
+        r="70"
+        stroke="green"
+        stroke-width="2"
+        fill="blue"
+      />
     </svg>
 
     <!-- Rectangle Section -->
@@ -100,7 +123,18 @@
       <input type="text" id="rect-ry" value="10" />
     </div>
     <svg width="250" height="250" id="svgRect">
-      <rect id="rect" x="50" y="50" width="100" height="60" stroke="black" stroke-width="3" fill="lightblue" rx="10" ry="10" />
+      <rect
+        id="rect"
+        x="50"
+        y="50"
+        width="100"
+        height="60"
+        stroke="black"
+        stroke-width="3"
+        fill="lightblue"
+        rx="10"
+        ry="10"
+      />
     </svg>
 
     <!-- Line Section -->
@@ -120,7 +154,15 @@
       <input type="text" id="line-stroke-width" value="2" />
     </div>
     <svg width="250" height="250" id="svgLine">
-      <line id="line" x1="30" y1="30" x2="200" y2="100" stroke="red" stroke-width="2" />
+      <line
+        id="line"
+        x1="30"
+        y1="30"
+        x2="200"
+        y2="100"
+        stroke="red"
+        stroke-width="2"
+      />
     </svg>
 
     <!-- Polygon Section -->
@@ -135,11 +177,28 @@
       <input type="text" id="polygon-fill" value="pink" />
       <br />
       <label for="polygon-text-input">Polygon Text:</label>
-      <input type="text" id="polygon-text-input" value="Congrats You Made Your First Save ICON" />
+      <input
+        type="text"
+        id="polygon-text-input"
+        value="Congrats You Made Your First Save ICON"
+      />
     </div>
     <svg width="500" height="270" id="svgPolygon">
-      <polygon id="polygon" fill="pink" points="80,50 230,50 230,200 155,125 80,200" />
-      <text id="polygonText" x="0" y="250" font-family="Verdana" font-size="20" fill="black">Congrats You Made Your First Save ICON</text>
+      <polygon
+        id="polygon"
+        fill="pink"
+        points="80,50 230,50 230,200 155,125 80,200"
+      />
+      <text
+        id="polygonText"
+        x="0"
+        y="250"
+        font-family="Verdana"
+        font-size="20"
+        fill="black"
+      >
+        Congrats You Made Your First Save ICON
+      </text>
     </svg>
 
     <script>
@@ -147,8 +206,19 @@
         // Circle functionality
         const outerCircle = document.getElementById("outerCircle");
         const innerCircle = document.getElementById("innerCircle");
-        const circleInputs = ["cx", "cy", "r", "stroke", "stroke-width", "fill", "inner-r", "inner-fill", "inner-stroke", "inner-stroke-width"];
-        circleInputs.forEach(id => {
+        const circleInputs = [
+          "cx",
+          "cy",
+          "r",
+          "stroke",
+          "stroke-width",
+          "fill",
+          "inner-r",
+          "inner-fill",
+          "inner-stroke",
+          "inner-stroke-width",
+        ];
+        circleInputs.forEach((id) => {
           document.getElementById(id).addEventListener("input", function () {
             if (id === "cx" || id === "cy") {
               outerCircle.setAttribute(id, this.value);
@@ -175,8 +245,17 @@
 
         // Rectangle functionality
         const rect = document.getElementById("rect");
-        const rectInputs = ["rect-x", "rect-y", "rect-width", "rect-height", "rect-fill", "rect-stroke", "rect-rx", "rect-ry"];
-        rectInputs.forEach(id => {
+        const rectInputs = [
+          "rect-x",
+          "rect-y",
+          "rect-width",
+          "rect-height",
+          "rect-fill",
+          "rect-stroke",
+          "rect-rx",
+          "rect-ry",
+        ];
+        rectInputs.forEach((id) => {
           document.getElementById(id).addEventListener("input", function () {
             rect.setAttribute(id.replace("rect-", ""), this.value);
           });
@@ -184,8 +263,15 @@
 
         // Line functionality
         const line = document.getElementById("line");
-        const lineInputs = ["line-x1", "line-y1", "line-x2", "line-y2", "line-stroke", "line-stroke-width"];
-        lineInputs.forEach(id => {
+        const lineInputs = [
+          "line-x1",
+          "line-y1",
+          "line-x2",
+          "line-y2",
+          "line-stroke",
+          "line-stroke-width",
+        ];
+        lineInputs.forEach((id) => {
           document.getElementById(id).addEventListener("input", function () {
             line.setAttribute(id.replace("line-", ""), this.value);
           });
@@ -194,14 +280,16 @@
         // Polygon functionality
         const polygon = document.getElementById("polygon");
         const polygonTextElement = document.getElementById("polygonText");
-        const polygonPointsContainer = document.getElementById("polygon-points-container");
+        const polygonPointsContainer = document.getElementById(
+          "polygon-points-container"
+        );
         const polygonFillInput = document.getElementById("polygon-fill");
         const polygonTextInput = document.getElementById("polygon-text-input");
 
         function updatePolygon() {
           const pointRows = document.querySelectorAll(".point-row");
           let points = [];
-          pointRows.forEach(row => {
+          pointRows.forEach((row) => {
             const x = row.querySelector(".point-x").value;
             const y = row.querySelector(".point-y").value;
             points.push(`${x},${y}`);
@@ -219,13 +307,15 @@
             <input type="text" class="point-y" value="${y}" />
             <button class="remove-btn">&times;</button>
           `;
-          div.querySelectorAll("input").forEach(input => {
+          div.querySelectorAll("input").forEach((input) => {
             input.addEventListener("input", updatePolygon);
           });
-          div.querySelector(".remove-btn").addEventListener("click", function () {
-            div.remove();
-            updatePolygon();
-          });
+          div
+            .querySelector(".remove-btn")
+            .addEventListener("click", function () {
+              div.remove();
+              updatePolygon();
+            });
           polygonPointsContainer.appendChild(div);
           updatePolygon();
         }
@@ -236,9 +326,9 @@
           { x: "230", y: "50" },
           { x: "230", y: "200" },
           { x: "155", y: "125" },
-          { x: "80", y: "200" }
+          { x: "80", y: "200" },
         ];
-        defaultPolygonPoints.forEach(pt => addPolygonPoint(pt.x, pt.y));
+        defaultPolygonPoints.forEach((pt) => addPolygonPoint(pt.x, pt.y));
 
         polygonFillInput.addEventListener("input", function () {
           polygon.setAttribute("fill", this.value);
@@ -247,9 +337,11 @@
           polygonTextElement.textContent = this.value;
         });
 
-        document.getElementById("add-polygon-point").addEventListener("click", function () {
-          addPolygonPoint();
-        });
+        document
+          .getElementById("add-polygon-point")
+          .addEventListener("click", function () {
+            addPolygonPoint();
+          });
       });
     </script>
   </body>
