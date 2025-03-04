@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basics Of SVGS</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      section {
+        margin-bottom: 40px;
+      }
+      hr {
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>SVG Basics Examples</h1>
+      <p>
+        For a detailed explanation, check out the
+        <a
+          target="_blank"
+          href="https://github.com/muhammadahmad1857/master-svgs/blob/master/step_00_basics/readme.md"
+          >README.md</a
+        >.
+      </p>
+    </header>
+
+    <!-- Inline SVG Examples -->
+    <section>
+      <h2>Inline SVG Examples</h2>
+      <!-- Circle -->
+      <svg width="200" height="200">
+        <circle cx="100" cy="100" r="50" fill="blue" />
+      </svg>
+      <hr />
+
+      <!-- Rectangle -->
+      <svg width="200" height="200">
+        <rect width="100" height="50" fill="green" />
+      </svg>
+      <hr />
+
+      <!-- Polygon -->
+      <svg width="200" height="200">
+        <polygon points="100,0 200,0 200,100 100,100" fill="red" />
+      </svg>
+      <hr />
+
+      <!-- Line -->
+      <svg width="200" height="200">
+        <line x1="0" y1="0" x2="200" y2="200" stroke="black" stroke-width="3" />
+      </svg>
+      <hr />
+
+      <!-- Ellipse -->
+      <svg width="200" height="200">
+        <ellipse cx="100" cy="100" rx="80" ry="40" fill="purple" />
+      </svg>
+      <hr />
+
+      <!-- Polyline -->
+      <svg width="200" height="200">
+        <polyline
+          points="0,100 50,50 100,100 150,50 200,100"
+          fill="none"
+          stroke="orange"
+          stroke-width="3"
+        />
+      </svg>
+      <hr />
+
+      <!-- Path (Bezier Curve) -->
+      <svg width="200" height="200">
+        <path
+          d="M10 80 Q 95 10 180 80"
+          stroke="brown"
+          fill="transparent"
+          stroke-width="3"
+        />
+      </svg>
+      <hr />
+
+      <!-- Text -->
+      <svg width="200" height="50">
+        <text x="10" y="30" font-family="Verdana" font-size="20" fill="black">
+          Hello SVG
+        </text>
+      </svg>
+    </section>
+
+    <!-- SVG Using Symbol and Use -->
+    <section>
+      <h2>SVG Using &lt;symbol&gt; and &lt;use&gt;</h2>
+      <!-- Define the symbol (hidden) -->
+      <svg style="display: none">
+        <symbol id="starSymbol" viewBox="0 0 100 100">
+          <polygon
+            points="50,15 61,35 82,35 66,50 72,70 50,60 28,70 34,50 18,35 39,35"
+            fill="gold"
+          />
+        </symbol>
+      </svg>
+      <!-- Use the symbol -->
+      <svg width="100" height="100">
+        <use href="#starSymbol"></use>
+      </svg>
+    </section>
+
+    <!-- SVG Via Image Tag -->
+    <section>
+      <h2>SVG Via &lt;img&gt; Tag</h2>
+      <img
+        src="./external.svg"
+        alt="External SVG Example"
+        width="200"
+        height="200"
+      />
+    </section>
+  </body>
+</html>

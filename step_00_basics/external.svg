@@ -1,0 +1,18 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="200" height="200" fill="lightgrey" />
+  
+  <!-- Circle -->
+  <circle cx="100" cy="100" r="50" fill="skyblue" />
+  
+  <!-- Triangle using polygon -->
+  <polygon points="100,20 140,180 60,180" fill="limegreen" />
+  
+  <!-- Diagonal Line -->
+  <line x1="0" y1="0" x2="200" y2="200" stroke="black" stroke-width="2" />
+  
+  <!-- Text -->
+  <text x="50" y="195" font-family="Arial" font-size="20" fill="black">
+    External SVG
+  </text>
+</svg>
