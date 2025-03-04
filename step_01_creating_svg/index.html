@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Creating your own SVG</title>
+    <title>SVG Editor</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -13,26 +13,45 @@
       input[type="text"] {
         margin: 5px;
         padding: 5px;
-        width: 50px;
+        width: 60px;
+      }
+      .remove-btn {
+        margin-left: 5px;
+        cursor: pointer;
+        color: white;
+        background-color: #e74c3c;
+        border: none;
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        font-size: 14px;
+        line-height: 18px;
+      }
+      .btn {
+        padding: 8px 16px;
+        margin: 10px 0;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background-color: #0056b3;
+      }
+      .point-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
       }
     </style>
   </head>
   <body>
-    <h2>
-      This page is pretty much the same as basics... but here I will add
-      explanations.
-    </h2>
-    <p>
-      For a detailed explanation, check out the
-      <a
-        target="_blank"
-        href="https://github.com/muhammadahmad1857/mastering-svgs/blob/master/step_01_creating_svg/readme.md"
-        >README.md</a
-      >.
-    </p>
-    <h3>Let's Draw a Circle</h3>
+    <h2>SVG Editor</h2>
 
-    <div>
+    <!-- Circle Section -->
+    <h3>Circle Controls</h3>
+    <div id="circle-controls">
       <label for="cx">Cx:</label>
       <input type="text" id="cx" value="125" />
       <label for="cy">Cy:</label>
@@ -45,6 +64,7 @@
       <input type="text" id="stroke-width" value="3" />
       <label for="fill">Fill:</label>
       <input type="text" id="fill" value="yellow" />
+      <br />
       <label for="inner-r">Inner R:</label>
       <input type="text" id="inner-r" value="70" />
       <label for="inner-fill">Inner Fill:</label>
@@ -55,30 +75,13 @@
       <input type="text" id="inner-stroke-width" value="2" />
     </div>
     <svg width="250" height="250" id="svgCircle">
-      <!-- Outer Circle -->
-      <circle
-        id="outerCircle"
-        cx="125"
-        cy="125"
-        r="100"
-        stroke="black"
-        stroke-width="3"
-        fill="yellow"
-      />
-      <!-- Inner Circle -->
-      <circle
-        id="innerCircle"
-        cx="125"
-        cy="125"
-        r="70"
-        stroke="green"
-        stroke-width="2"
-        fill="blue"
-      />
+      <circle id="outerCircle" cx="125" cy="125" r="100" stroke="black" stroke-width="3" fill="yellow" />
+      <circle id="innerCircle" cx="125" cy="125" r="70" stroke="green" stroke-width="2" fill="blue" />
     </svg>
 
-    <h3>Let's Draw a Rectangle and a Line</h3>
-    <div>
+    <!-- Rectangle Section -->
+    <h3>Rectangle Controls</h3>
+    <div id="rect-controls">
       <label for="rect-x">Rect X:</label>
       <input type="text" id="rect-x" value="50" />
       <label for="rect-y">Rect Y:</label>
@@ -91,6 +94,18 @@
       <input type="text" id="rect-fill" value="lightblue" />
       <label for="rect-stroke">Stroke:</label>
       <input type="text" id="rect-stroke" value="black" />
+      <label for="rect-rx">Rx:</label>
+      <input type="text" id="rect-rx" value="10" />
+      <label for="rect-ry">Ry:</label>
+      <input type="text" id="rect-ry" value="10" />
+    </div>
+    <svg width="250" height="250" id="svgRect">
+      <rect id="rect" x="50" y="50" width="100" height="60" stroke="black" stroke-width="3" fill="lightblue" rx="10" ry="10" />
+    </svg>
+
+    <!-- Line Section -->
+    <h3>Line Controls</h3>
+    <div id="line-controls">
       <label for="line-x1">Line X1:</label>
       <input type="text" id="line-x1" value="30" />
       <label for="line-y1">Line Y1:</label>
@@ -99,98 +114,141 @@
       <input type="text" id="line-x2" value="200" />
       <label for="line-y2">Line Y2:</label>
       <input type="text" id="line-y2" value="100" />
+      <label for="line-stroke">Stroke:</label>
+      <input type="text" id="line-stroke" value="red" />
+      <label for="line-stroke-width">Stroke W:</label>
+      <input type="text" id="line-stroke-width" value="2" />
     </div>
-    <svg width="250" height="250" id="svgRectLine">
-      <!-- Rectangle -->
-      <rect
-        id="rect"
-        x="25"
-        y="25"
-        width="200"
-        height="200"
-        stroke="black"
-        stroke-width="3"
-        fill="lightblue"
-        rx="20"
-        ry="20"
-      />
-      <!-- Line -->
-      <line
-        id="line"
-        x1="60"
-        y1="50"
-        x2="200"
-        y2="150"
-        stroke="red"
-        stroke-width="2"
-      />
+    <svg width="250" height="250" id="svgLine">
+      <line id="line" x1="30" y1="30" x2="200" y2="100" stroke="red" stroke-width="2" />
     </svg>
-    <h3>Now Let's Draw a Custom Shape Polygon</h3>
 
-    <svg width="500" height="270">
-      <polygon fill="pink" points="80,50 230,50 230,200 155,125 80,200" />
-      <!-- Congrats You Make your first  Save ICON -->
-      <text x="0" y="250" font-family="Verdana" font-size="20" fill="black">
-        Congrats You Make your first Save ICON
-      </text>
+    <!-- Polygon Section -->
+    <h3>Polygon Controls</h3>
+    <div id="polygon-controls-container">
+      <div id="polygon-points-container">
+        <!-- Polygon points will be added here dynamically -->
+      </div>
+      <button class="btn" id="add-polygon-point">Add Point</button>
+      <br />
+      <label for="polygon-fill">Fill:</label>
+      <input type="text" id="polygon-fill" value="pink" />
+      <br />
+      <label for="polygon-text-input">Polygon Text:</label>
+      <input type="text" id="polygon-text-input" value="Congrats You Made Your First Save ICON" />
+    </div>
+    <svg width="500" height="270" id="svgPolygon">
+      <polygon id="polygon" fill="pink" points="80,50 230,50 230,200 155,125 80,200" />
+      <text id="polygonText" x="0" y="250" font-family="Verdana" font-size="20" fill="black">Congrats You Made Your First Save ICON</text>
     </svg>
+
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        // Circle functionality
         const outerCircle = document.getElementById("outerCircle");
         const innerCircle = document.getElementById("innerCircle");
-        const rect = document.getElementById("rect");
-        const line = document.getElementById("line");
-        const inputs = document.querySelectorAll('input[type="text"]');
-
-        inputs.forEach((input) => {
-          input.addEventListener("input", function () {
-            const value = this.value;
-            switch (input.id) {
-              case "cx":
-              case "cy":
-                outerCircle.setAttribute(input.id, value);
-                innerCircle.setAttribute(input.id, value);
-                break;
-              case "r":
-                outerCircle.setAttribute("r", value);
-                break;
-              case "inner-r":
-                innerCircle.setAttribute("r", value);
-                break;
-              case "stroke":
-                outerCircle.setAttribute("stroke", value);
-                break;
-              case "stroke-width":
-                outerCircle.setAttribute("stroke-width", value);
-                break;
-              case "fill":
-                outerCircle.setAttribute("fill", value);
-                break;
-              case "inner-stroke":
-                innerCircle.setAttribute("stroke", value);
-                break;
-              case "inner-stroke-width":
-                innerCircle.setAttribute("stroke-width", value);
-                break;
-              case "inner-fill":
-                innerCircle.setAttribute("fill", value);
-                break;
-              case "rect-x":
-              case "rect-y":
-              case "rect-width":
-              case "rect-height":
-              case "rect-fill":
-              case "rect-stroke":
-                rect.setAttribute(input.id.replace("rect-", ""), value);
-                break;
-              case "line-x1":
-              case "line-y1":
-              case "line-x2":
-              case "line-y2":
-                line.setAttribute(input.id.replace("line-", ""), value);
-                break;
+        const circleInputs = ["cx", "cy", "r", "stroke", "stroke-width", "fill", "inner-r", "inner-fill", "inner-stroke", "inner-stroke-width"];
+        circleInputs.forEach(id => {
+          document.getElementById(id).addEventListener("input", function () {
+            if (id === "cx" || id === "cy") {
+              outerCircle.setAttribute(id, this.value);
+              innerCircle.setAttribute(id, this.value);
+            } else if (id === "r") {
+              outerCircle.setAttribute("r", this.value);
+            } else if (id === "inner-r") {
+              innerCircle.setAttribute("r", this.value);
+            } else if (id === "stroke") {
+              outerCircle.setAttribute("stroke", this.value);
+            } else if (id === "stroke-width") {
+              outerCircle.setAttribute("stroke-width", this.value);
+            } else if (id === "fill") {
+              outerCircle.setAttribute("fill", this.value);
+            } else if (id === "inner-stroke") {
+              innerCircle.setAttribute("stroke", this.value);
+            } else if (id === "inner-stroke-width") {
+              innerCircle.setAttribute("stroke-width", this.value);
+            } else if (id === "inner-fill") {
+              innerCircle.setAttribute("fill", this.value);
             }
           });
+        });
+
+        // Rectangle functionality
+        const rect = document.getElementById("rect");
+        const rectInputs = ["rect-x", "rect-y", "rect-width", "rect-height", "rect-fill", "rect-stroke", "rect-rx", "rect-ry"];
+        rectInputs.forEach(id => {
+          document.getElementById(id).addEventListener("input", function () {
+            rect.setAttribute(id.replace("rect-", ""), this.value);
+          });
+        });
+
+        // Line functionality
+        const line = document.getElementById("line");
+        const lineInputs = ["line-x1", "line-y1", "line-x2", "line-y2", "line-stroke", "line-stroke-width"];
+        lineInputs.forEach(id => {
+          document.getElementById(id).addEventListener("input", function () {
+            line.setAttribute(id.replace("line-", ""), this.value);
+          });
+        });
+
+        // Polygon functionality
+        const polygon = document.getElementById("polygon");
+        const polygonTextElement = document.getElementById("polygonText");
+        const polygonPointsContainer = document.getElementById("polygon-points-container");
+        const polygonFillInput = document.getElementById("polygon-fill");
+        const polygonTextInput = document.getElementById("polygon-text-input");
+
+        function updatePolygon() {
+          const pointRows = document.querySelectorAll(".point-row");
+          let points = [];
+          pointRows.forEach(row => {
+            const x = row.querySelector(".point-x").value;
+            const y = row.querySelector(".point-y").value;
+            points.push(`${x},${y}`);
+          });
+          polygon.setAttribute("points", points.join(" "));
+        }
+
+        function addPolygonPoint(x = "100", y = "100") {
+          const div = document.createElement("div");
+          div.className = "point-row";
+          div.innerHTML = `
+            <label>X:</label>
+            <input type="text" class="point-x" value="${x}" />
+            <label>Y:</label>
+            <input type="text" class="point-y" value="${y}" />
+            <button class="remove-btn">&times;</button>
+          `;
+          div.querySelectorAll("input").forEach(input => {
+            input.addEventListener("input", updatePolygon);
+          });
+          div.querySelector(".remove-btn").addEventListener("click", function () {
+            div.remove();
+            updatePolygon();
+          });
+          polygonPointsContainer.appendChild(div);
+          updatePolygon();
+        }
+
+        // Initialize polygon with 5 default points
+        const defaultPolygonPoints = [
+          { x: "80", y: "50" },
+          { x: "230", y: "50" },
+          { x: "230", y: "200" },
+          { x: "155", y: "125" },
+          { x: "80", y: "200" }
+        ];
+        defaultPolygonPoints.forEach(pt => addPolygonPoint(pt.x, pt.y));
+
+        polygonFillInput.addEventListener("input", function () {
+          polygon.setAttribute("fill", this.value);
+        });
+        polygonTextInput.addEventListener("input", function () {
+          polygonTextElement.textContent = this.value;
+        });
+
+        document.getElementById("add-polygon-point").addEventListener("click", function () {
+          addPolygonPoint();
         });
       });
     </script>
